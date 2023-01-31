@@ -28,7 +28,8 @@ public class GroceryDAO {
         List<String> groceries = new ArrayList<>();
         try {
             //Write SQL logic here
-            String sql = "change me";
+           
+            String sql = "SELECT * FROM Grocery";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
@@ -40,7 +41,7 @@ public class GroceryDAO {
         return groceries;
     }
     /**
-     * TODO: Insert a new row into the Grocery table, which contains a column named grocery_name.
+     * TODO: #1 Insert a new row into the Grocery table, which contains a column named grocery_name.
      * A parameter groceryName is also provided, which should be the value used for grocery_name when inserting a
      * grocery. For instance, calling groceryDAO.addGrocery("bread"); should insert a record into the grocery table
      * with the value 'bread' for the grocery_name column.
@@ -58,14 +59,17 @@ public class GroceryDAO {
      */
     public void addGrocery(String groceryName){
         Connection connection = ConnectionUtil.getConnection();
+        
         try {
+            
             //Write SQL logic here
-            String sql = "change me";
+            String sql ="INSERT INTO Grocery(grocery_name) VALUES(?)";
             PreparedStatement ps = connection.prepareStatement(sql);
 
             //add code that leverages ps.setString here
-
-            ps.executeUpdate();
+            
+            ps.setString(1,"apples");
+            System.out.println(ps.executeUpdate());
         }catch(SQLException e){
             e.printStackTrace();
         }
