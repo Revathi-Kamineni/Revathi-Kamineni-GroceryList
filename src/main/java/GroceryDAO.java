@@ -68,7 +68,7 @@ public class GroceryDAO {
 
             //add code that leverages ps.setString here
             
-            ps.setString(1,"apples");
+            ps.setString(1,groceryName);
             System.out.println(ps.executeUpdate());
         }catch(SQLException e){
             e.printStackTrace();
